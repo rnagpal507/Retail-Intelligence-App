@@ -1170,8 +1170,8 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
           </div>
 
           {/* 6. Store Performance Audit Ledger Table */}
-          <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden" id="store-ledger-section">
-            <div className="p-5 border-b border-slate-100 bg-slate-50/50 flex flex-col md:flex-row md:items-center md:justify-between gap-4" id="ledger-header">
+          <div className="bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden hover:shadow-md transition-all duration-300" id="store-ledger-section">
+            <div className="p-5 border-b border-slate-100 bg-slate-50/40 flex flex-col md:flex-row md:items-center md:justify-between gap-4" id="ledger-header">
               <div>
                 <h2 className="font-bold text-slate-800 text-sm">Store Performance Audit Ledger</h2>
                 <p className="text-[10px] text-slate-400">Sort, isolate, and audit store performance under current active filters</p>

@@ -117,10 +117,10 @@ export default function UploadPanel({ onDataLoaded, onUseSampleData }: UploadPan
     <div className="w-full max-w-4xl mx-auto px-4 py-12" id="upload-panel-container">
       {/* Header Banner */}
       <div className="text-center mb-12" id="upload-header">
-        <h1 className="text-4xl font-black tracking-tight text-slate-900 sm:text-5xl font-display bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 bg-clip-text text-transparent">
+        <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl font-display bg-gradient-to-r from-white via-indigo-200 to-slate-200 bg-clip-text text-transparent">
           Retail Sales Intelligence
         </h1>
-        <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-slate-500 font-sans leading-relaxed">
+        <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-slate-300 font-sans leading-relaxed">
           Transform unstructured weekly sales reports and store reference tables into interactive, executive-ready KPIs and strategic business briefs with relational analytics.
         </p>
       </div>

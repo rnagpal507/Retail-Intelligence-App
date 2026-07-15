@@ -73,28 +73,28 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-tr from-slate-50 via-zinc-50 to-indigo-50/30 bg-grid-pattern text-slate-900 font-sans flex flex-col justify-between" id="app-wrapper">
+    <div className="min-h-screen bg-gradient-to-tr from-[#080d1a] via-[#0f1626] to-[#17223b] bg-grid-pattern text-slate-100 font-sans flex flex-col justify-between" id="app-wrapper">
       
       {/* Universal Global Header Frame */}
-      <header className="bg-white/80 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-50 shadow-xs" id="global-nav">
+      <header className="bg-[#080d1a]/80 backdrop-blur-md border-b border-slate-800/80 sticky top-0 z-50 shadow-md" id="global-nav">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-3 cursor-pointer group" onClick={handleReset}>
-            <div className="p-2 bg-gradient-to-br from-indigo-600 to-indigo-800 text-white rounded-xl shadow-sm group-hover:scale-105 transition-transform duration-200 shrink-0">
+            <div className="p-2 bg-gradient-to-br from-indigo-500 to-indigo-700 text-white rounded-xl shadow-md group-hover:scale-105 transition-transform duration-200 shrink-0">
               <Store className="h-5 w-5" />
             </div>
             <div>
-              <span className="text-sm font-black uppercase tracking-wider text-slate-900 font-display">RetailIntel</span>
-              <span className="text-[10px] block text-indigo-500 font-semibold font-mono leading-none tracking-tight">Intelligence Engine</span>
+              <span className="text-sm font-black uppercase tracking-wider text-white font-display">RetailIntel</span>
+              <span className="text-[10px] block text-indigo-400 font-semibold font-mono leading-none tracking-tight">Intelligence Engine</span>
             </div>
           </div>
 
           <div className="flex items-center space-x-4">
             {viewMode === "dashboard" && (
-              <span className="hidden sm:inline-flex items-center px-3 py-1 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-100 shadow-2xs">
+              <span className="hidden sm:inline-flex items-center px-3 py-1 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-2xs">
                 <BarChart2 className="h-3 w-3 mr-1" /> Executive Mapped View
               </span>
             )}
-            <div className="text-xs text-slate-400 font-mono font-medium bg-slate-100 border border-slate-200/60 rounded-md px-2 py-0.5 shadow-2xs">
+            <div className="text-xs text-slate-300 font-mono font-medium bg-slate-800 border border-slate-700/60 rounded-md px-2 py-0.5 shadow-2xs">
               v1.2.0
             </div>
           </div>
