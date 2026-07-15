@@ -138,15 +138,15 @@ export default function App() {
       </main>
 
       {/* Global Regulatory Footer Frame */}
-      <footer className="bg-white border-t border-slate-200 py-6 text-center text-[11px] text-slate-400" id="global-footer">
+      <footer className="bg-[#080d1a]/90 backdrop-blur-md border-t border-slate-800/80 py-6 text-center text-[11px] text-slate-400" id="global-footer">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-medium">
+          <p className="font-medium text-slate-400">
             © 2026 Retail Intel Technologies. All corporate schemas protected by ISO-27001 validation protocols.
           </p>
           <div className="flex space-x-4">
-            <span className="hover:text-slate-600 cursor-help">Relational Join Engine v1.0</span>
-            <span className="text-slate-200">|</span>
-            <span className="hover:text-slate-600 cursor-help">Google AI Studio Integrator</span>
+            <span className="hover:text-indigo-400 transition cursor-help">Relational Join Engine v1.0</span>
+            <span className="text-slate-800">|</span>
+            <span className="hover:text-indigo-400 transition cursor-help">Google AI Studio Integrator</span>
           </div>
         </div>
       </footer>

@@ -120,26 +120,26 @@ export default function UploadPanel({ onDataLoaded, onUseSampleData }: UploadPan
         <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl font-display bg-gradient-to-r from-white via-indigo-200 to-slate-200 bg-clip-text text-transparent">
           Retail Sales Intelligence
         </h1>
-        <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-slate-300 font-sans leading-relaxed">
+        <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-black font-bold font-sans leading-relaxed">
           Transform unstructured weekly sales reports and store reference tables into interactive, executive-ready KPIs and strategic business briefs with relational analytics.
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8" id="upload-grid">
         {/* Sales Report Upload Area */}
-        <div className="flex flex-col h-full bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden" id="sales-upload-card">
-          <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+        <div className="flex flex-col h-full bg-[#0d1527]/90 backdrop-blur-md rounded-2xl border border-slate-800 shadow-md overflow-hidden" id="sales-upload-card">
+          <div className="p-5 border-b border-slate-800 flex items-center justify-between bg-[#131b2e]/50">
             <div className="flex items-center space-x-2.5">
-              <div className="p-2 bg-emerald-50 rounded-lg text-emerald-600">
+              <div className="p-2 bg-emerald-500/10 rounded-lg text-emerald-400">
                 <FileSpreadsheet className="h-5 w-5" />
               </div>
               <div>
-                <h2 className="font-semibold text-slate-800 text-sm">1. Weekly Sales Dataset</h2>
+                <h2 className="font-semibold text-slate-100 text-sm">1. Weekly Sales Dataset</h2>
                 <p className="text-xs text-slate-400">retail_weekly_sales.xlsx / .csv</p>
               </div>
             </div>
             {salesSummary?.isValid && (
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                 <Check className="h-3 w-3 mr-1" /> Ready
               </span>
             )}
@@ -153,10 +153,10 @@ export default function UploadPanel({ onDataLoaded, onUseSampleData }: UploadPan
               onClick={() => salesInputRef.current?.click()}
               className={`border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-all duration-200 flex flex-col items-center justify-center min-h-[160px] ${
                 isSalesDragging
-                  ? "border-emerald-500 bg-emerald-50/40"
+                  ? "border-emerald-500 bg-emerald-500/10"
                   : salesSummary?.isValid
-                  ? "border-emerald-200 bg-emerald-50/10 hover:bg-emerald-50/20"
-                  : "border-slate-200 hover:border-slate-300 hover:bg-slate-50/50"
+                  ? "border-emerald-500/30 bg-emerald-500/5 hover:bg-emerald-500/10"
+                  : "border-slate-700 hover:border-slate-500 hover:bg-slate-800/30"
               }`}
             >
               <input
@@ -169,20 +169,20 @@ export default function UploadPanel({ onDataLoaded, onUseSampleData }: UploadPan
               
               {salesLoading ? (
                 <div className="flex flex-col items-center">
-                  <RefreshCw className="h-8 w-8 text-emerald-600 animate-spin" />
-                  <p className="mt-2 text-xs text-slate-500 font-medium">Scanning and validating spreadsheet...</p>
+                  <RefreshCw className="h-8 w-8 text-emerald-400 animate-spin" />
+                  <p className="mt-2 text-xs text-slate-300 font-medium">Scanning and validating spreadsheet...</p>
                 </div>
               ) : salesFile ? (
                 <div className="flex flex-col items-center">
-                  <FileText className={`h-10 w-10 ${salesSummary?.isValid ? "text-emerald-600" : "text-amber-500"}`} />
-                  <p className="mt-2 text-xs font-semibold text-slate-700 truncate max-w-[200px]">{salesFile.name}</p>
+                  <FileText className={`h-10 w-10 ${salesSummary?.isValid ? "text-emerald-400" : "text-amber-400"}`} />
+                  <p className="mt-2 text-xs font-semibold text-slate-200 truncate max-w-[200px]">{salesFile.name}</p>
                   <p className="text-[11px] text-slate-400 mt-0.5">{(salesFile.size / 1024).toFixed(1)} KB</p>
                 </div>
               ) : (
                 <div className="flex flex-col items-center">
-                  <UploadCloud className="h-10 w-10 text-slate-400" />
-                  <p className="mt-2 text-xs font-semibold text-slate-700">Drag file here or click to browse</p>
-                  <p className="text-[11px] text-slate-400 mt-1">Supports XLSX, XLS, and CSV files</p>
+                  <UploadCloud className="h-10 w-10 text-slate-500" />
+                  <p className="mt-2 text-xs font-semibold text-slate-300">Drag file here or click to browse</p>
+                  <p className="text-[11px] text-slate-500 mt-1">Supports XLSX, XLS, and CSV files</p>
                 </div>
               )}
             </div>
@@ -210,31 +210,31 @@ export default function UploadPanel({ onDataLoaded, onUseSampleData }: UploadPan
                     className="space-y-3"
                   >
                     <div className="grid grid-cols-2 gap-3 text-xs">
-                      <div className="bg-slate-50 p-2.5 rounded border border-slate-100">
+                      <div className="bg-[#131b2e]/60 p-2.5 rounded border border-slate-800">
                         <span className="block text-[11px] text-slate-400 font-medium uppercase tracking-wider">Row Count</span>
-                        <span className="text-sm font-bold text-slate-800">{salesSummary.rowCount.toLocaleString()} Rows</span>
+                        <span className="text-sm font-bold text-slate-200">{salesSummary.rowCount.toLocaleString()} Rows</span>
                       </div>
-                      <div className="bg-slate-50 p-2.5 rounded border border-slate-100">
+                      <div className="bg-[#131b2e]/60 p-2.5 rounded border border-slate-800">
                         <span className="block text-[11px] text-slate-400 font-medium uppercase tracking-wider">Columns</span>
-                        <span className="text-sm font-bold text-slate-800">{salesSummary.columnsPresent.length} Identified</span>
+                        <span className="text-sm font-bold text-slate-200">{salesSummary.columnsPresent.length} Identified</span>
                       </div>
                     </div>
 
-                    <div className="bg-slate-50 p-3 rounded border border-slate-100 text-xs space-y-1.5">
+                    <div className="bg-[#131b2e]/60 p-3 rounded border border-slate-800 text-xs space-y-1.5">
                       <div className="flex justify-between items-center text-[11px] text-slate-400 font-semibold uppercase tracking-wider">
                         <span>Null/Missing Values</span>
-                        <span className={`px-1.5 py-0.5 rounded text-[10px] ${salesSummary.nullCount > 0 ? "bg-amber-100 text-amber-800" : "bg-emerald-100 text-emerald-800"}`}>
+                        <span className={`px-1.5 py-0.5 rounded text-[10px] ${salesSummary.nullCount > 0 ? "bg-amber-500/10 text-amber-400 border border-amber-500/20" : "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"}`}>
                           {salesSummary.nullCount} Flagged
                         </span>
                       </div>
                       {salesSummary.nullCount > 0 ? (
-                        <div className="max-h-24 overflow-y-auto pr-1 text-[11px] text-slate-500 space-y-1 mt-1">
+                        <div className="max-h-24 overflow-y-auto pr-1 text-[11px] text-slate-300 space-y-1 mt-1">
                           {Object.entries(salesSummary.nullFieldsSummary)
                             .filter(([_, count]) => count > 0)
                             .map(([field, count]) => (
                               <div key={field} className="flex justify-between">
-                                <span className="font-mono text-[10px]">{field}</span>
-                                <span className="text-slate-400 font-medium">{count} empty rows</span>
+                                <span className="font-mono text-[10px] text-slate-400">{field}</span>
+                                <span className="text-slate-500 font-medium">{count} empty rows</span>
                               </div>
                             ))}
                         </div>
@@ -250,19 +250,19 @@ export default function UploadPanel({ onDataLoaded, onUseSampleData }: UploadPan
         </div>
 
         {/* Store Master Reference Data */}
-        <div className="flex flex-col h-full bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden" id="stores-upload-card">
-          <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+        <div className="flex flex-col h-full bg-[#0d1527]/90 backdrop-blur-md rounded-2xl border border-slate-800 shadow-md overflow-hidden" id="stores-upload-card">
+          <div className="p-5 border-b border-slate-800 flex items-center justify-between bg-[#131b2e]/50">
             <div className="flex items-center space-x-2.5">
-              <div className="p-2 bg-indigo-50 rounded-lg text-indigo-600">
+              <div className="p-2 bg-indigo-500/10 rounded-lg text-indigo-400">
                 <FileSpreadsheet className="h-5 w-5" />
               </div>
               <div>
-                <h2 className="font-semibold text-slate-800 text-sm">2. Store Master Dataset</h2>
+                <h2 className="font-semibold text-slate-100 text-sm">2. Store Master Dataset</h2>
                 <p className="text-xs text-slate-400">store_master.xlsx / .csv</p>
               </div>
             </div>
             {storesSummary?.isValid && (
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
                 <Check className="h-3 w-3 mr-1" /> Ready
               </span>
             )}
@@ -276,10 +276,10 @@ export default function UploadPanel({ onDataLoaded, onUseSampleData }: UploadPan
               onClick={() => storesInputRef.current?.click()}
               className={`border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-all duration-200 flex flex-col items-center justify-center min-h-[160px] ${
                 isStoresDragging
-                  ? "border-indigo-500 bg-indigo-50/40"
+                  ? "border-indigo-500 bg-indigo-500/10"
                   : storesSummary?.isValid
-                  ? "border-indigo-200 bg-indigo-50/10 hover:bg-indigo-50/20"
-                  : "border-slate-200 hover:border-slate-300 hover:bg-slate-50/50"
+                  ? "border-indigo-500/30 bg-indigo-500/5 hover:bg-indigo-500/10"
+                  : "border-slate-700 hover:border-slate-500 hover:bg-slate-800/30"
               }`}
             >
               <input
@@ -292,20 +292,20 @@ export default function UploadPanel({ onDataLoaded, onUseSampleData }: UploadPan
               
               {storesLoading ? (
                 <div className="flex flex-col items-center">
-                  <RefreshCw className="h-8 w-8 text-indigo-600 animate-spin" />
-                  <p className="mt-2 text-xs text-slate-500 font-medium">Scanning and validating reference data...</p>
+                  <RefreshCw className="h-8 w-8 text-indigo-400 animate-spin" />
+                  <p className="mt-2 text-xs text-slate-300 font-medium">Scanning and validating reference data...</p>
                 </div>
               ) : storesFile ? (
                 <div className="flex flex-col items-center">
-                  <FileText className={`h-10 w-10 ${storesSummary?.isValid ? "text-indigo-600" : "text-amber-500"}`} />
-                  <p className="mt-2 text-xs font-semibold text-slate-700 truncate max-w-[200px]">{storesFile.name}</p>
+                  <FileText className={`h-10 w-10 ${storesSummary?.isValid ? "text-indigo-400" : "text-amber-400"}`} />
+                  <p className="mt-2 text-xs font-semibold text-slate-200 truncate max-w-[200px]">{storesFile.name}</p>
                   <p className="text-[11px] text-slate-400 mt-0.5">{(storesFile.size / 1024).toFixed(1)} KB</p>
                 </div>
               ) : (
                 <div className="flex flex-col items-center">
-                  <UploadCloud className="h-10 w-10 text-slate-400" />
-                  <p className="mt-2 text-xs font-semibold text-slate-700">Drag file here or click to browse</p>
-                  <p className="text-[11px] text-slate-400 mt-1">Supports XLSX, XLS, and CSV files</p>
+                  <UploadCloud className="h-10 w-10 text-slate-500" />
+                  <p className="mt-2 text-xs font-semibold text-slate-300">Drag file here or click to browse</p>
+                  <p className="text-[11px] text-slate-500 mt-1">Supports XLSX, XLS, and CSV files</p>
                 </div>
               )}
             </div>
@@ -333,31 +333,31 @@ export default function UploadPanel({ onDataLoaded, onUseSampleData }: UploadPan
                     className="space-y-3"
                   >
                     <div className="grid grid-cols-2 gap-3 text-xs">
-                      <div className="bg-slate-50 p-2.5 rounded border border-slate-100">
+                      <div className="bg-[#131b2e]/60 p-2.5 rounded border border-slate-800">
                         <span className="block text-[11px] text-slate-400 font-medium uppercase tracking-wider">Row Count</span>
-                        <span className="text-sm font-bold text-slate-800">{storesSummary.rowCount} Records</span>
+                        <span className="text-sm font-bold text-slate-200">{storesSummary.rowCount} Records</span>
                       </div>
-                      <div className="bg-slate-50 p-2.5 rounded border border-slate-100">
+                      <div className="bg-[#131b2e]/60 p-2.5 rounded border border-slate-800">
                         <span className="block text-[11px] text-slate-400 font-medium uppercase tracking-wider">Columns</span>
-                        <span className="text-sm font-bold text-slate-800">{storesSummary.columnsPresent.length} Identified</span>
+                        <span className="text-sm font-bold text-slate-200">{storesSummary.columnsPresent.length} Identified</span>
                       </div>
                     </div>
 
-                    <div className="bg-slate-50 p-3 rounded border border-slate-100 text-xs space-y-1.5">
+                    <div className="bg-[#131b2e]/60 p-3 rounded border border-slate-800 text-xs space-y-1.5">
                       <div className="flex justify-between items-center text-[11px] text-slate-400 font-semibold uppercase tracking-wider">
                         <span>Null/Missing Values</span>
-                        <span className={`px-1.5 py-0.5 rounded text-[10px] ${storesSummary.nullCount > 0 ? "bg-amber-100 text-amber-800" : "bg-indigo-100 text-indigo-800"}`}>
+                        <span className={`px-1.5 py-0.5 rounded text-[10px] ${storesSummary.nullCount > 0 ? "bg-amber-500/10 text-amber-400 border border-amber-500/20" : "bg-indigo-500/10 text-indigo-400 border border-indigo-500/20"}`}>
                           {storesSummary.nullCount} Flagged
                         </span>
                       </div>
                       {storesSummary.nullCount > 0 ? (
-                        <div className="max-h-24 overflow-y-auto pr-1 text-[11px] text-slate-500 space-y-1 mt-1">
+                        <div className="max-h-24 overflow-y-auto pr-1 text-[11px] text-slate-300 space-y-1 mt-1">
                           {Object.entries(storesSummary.nullFieldsSummary)
                             .filter(([_, count]) => count > 0)
                             .map(([field, count]) => (
                               <div key={field} className="flex justify-between">
-                                <span className="font-mono text-[10px]">{field}</span>
-                                <span className="text-slate-400 font-medium">{count} empty rows</span>
+                                <span className="font-mono text-[10px] text-slate-400">{field}</span>
+                                <span className="text-slate-500 font-medium">{count} empty rows</span>
                               </div>
                             ))}
                         </div>
@@ -417,14 +417,14 @@ export default function UploadPanel({ onDataLoaded, onUseSampleData }: UploadPan
       </AnimatePresence>
 
       {/* Baseline Mock Option */}
-      <div className="border-t border-slate-200 pt-8 text-center" id="mock-trigger-panel">
-        <p className="text-xs text-slate-500 font-medium">Don't have custom spreadsheets on hand?</p>
+      <div className="border-t border-slate-800 pt-8 text-center" id="mock-trigger-panel">
+        <p className="text-xs text-slate-400 font-medium">Don't have custom spreadsheets on hand?</p>
         <button
           onClick={onUseSampleData}
-          className="mt-3 inline-flex items-center px-4 py-2 bg-slate-100 text-slate-700 border border-slate-200 rounded-lg hover:bg-slate-200 transition-all font-semibold cursor-pointer text-xs space-x-1.5"
+          className="mt-3 inline-flex items-center px-4 py-2 bg-slate-800 hover:bg-slate-700 text-indigo-300 border border-slate-700/60 rounded-lg transition-all font-semibold cursor-pointer text-xs space-x-1.5"
           id="load-sample-btn"
         >
-          <Sparkles className="h-4 w-4 text-slate-600 animate-pulse" />
+          <Sparkles className="h-4 w-4 text-indigo-400 animate-pulse" />
           <span>Load sample retail dataset (1,920 Rows)</span>
         </button>
       </div>

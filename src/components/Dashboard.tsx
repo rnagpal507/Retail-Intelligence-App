@@ -419,20 +419,20 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
     <div className="w-full space-y-8 px-4 py-6" id="retail-dashboard-stage">
       
       {/* 1. Upper Header & Context Desk */}
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between border-b border-slate-200/80 pb-6 gap-4" id="dashboard-header-container">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between border-b border-slate-800 pb-6 gap-4" id="dashboard-header-container">
         <div>
-          <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-100 shadow-2xs uppercase tracking-wider">
+          <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-2xs uppercase tracking-wider">
             <ShieldCheck className="h-3.5 w-3.5 mr-1" /> Mapped & Relational Join Active
           </span>
-          <h1 className="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl mt-2 font-display bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-black text-white tracking-tight sm:text-4xl mt-2 font-display bg-gradient-to-r from-white via-indigo-200 to-slate-200 bg-clip-text text-transparent">
             Retail Intelligence & Operations Hub
           </h1>
           {joinInfo ? (
-            <p className="text-xs text-slate-500 mt-1.5 font-sans">
-              Analyzing ledger <span className="font-semibold font-mono text-indigo-600 bg-indigo-50 border border-indigo-100/50 px-1.5 py-0.5 rounded">{joinInfo.salesFileName}</span> joined with <span className="font-semibold font-mono text-indigo-600 bg-indigo-50 border border-indigo-100/50 px-1.5 py-0.5 rounded">{joinInfo.storesFileName}</span> ({joinInfo.salesRows.toLocaleString()} rows verified).
+            <p className="text-xs text-slate-300 mt-1.5 font-sans">
+              Analyzing ledger <span className="font-semibold font-mono text-indigo-300 bg-indigo-950/50 border border-indigo-800/40 px-1.5 py-0.5 rounded">{joinInfo.salesFileName}</span> joined with <span className="font-semibold font-mono text-indigo-300 bg-indigo-950/50 border border-indigo-800/40 px-1.5 py-0.5 rounded">{joinInfo.storesFileName}</span> ({joinInfo.salesRows.toLocaleString()} rows verified).
             </p>
           ) : (
-            <p className="text-xs text-slate-500 mt-1.5 font-sans">
+            <p className="text-xs text-slate-300 mt-1.5 font-sans">
               Exploring pre-populated benchmark dataset (96 chronological weeks, 1,920 records mapped across 20 retail venues).
             </p>
           )}
@@ -442,7 +442,7 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
           <button
             onClick={handleExportFilteredCSV}
             disabled={filteredSales.length === 0}
-            className="inline-flex items-center justify-center px-4 py-2.5 text-xs font-bold text-indigo-700 bg-indigo-50/80 border border-indigo-200/60 rounded-xl hover:bg-indigo-100 transition-all cursor-pointer disabled:opacity-40 shadow-2xs hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex items-center justify-center px-4 py-2.5 text-xs font-bold text-indigo-300 bg-indigo-950/60 border border-indigo-800/80 rounded-xl hover:bg-indigo-900/60 transition-all cursor-pointer disabled:opacity-40 shadow-2xs hover:scale-[1.02] active:scale-[0.98]"
             id="export-csv-btn"
           >
             <Download className="h-3.5 w-3.5 mr-1.5" />
@@ -452,7 +452,7 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
           <button
             onClick={handleExportInsightsMD}
             disabled={!metrics}
-            className="inline-flex items-center justify-center px-4 py-2.5 text-xs font-bold text-slate-700 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-all cursor-pointer disabled:opacity-40 shadow-2xs hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex items-center justify-center px-4 py-2.5 text-xs font-bold text-slate-200 bg-[#0d1527]/80 border border-slate-800 rounded-xl hover:bg-slate-800 transition-all cursor-pointer disabled:opacity-40 shadow-2xs hover:scale-[1.02] active:scale-[0.98]"
             id="export-report-btn"
           >
             <FileText className="h-3.5 w-3.5 mr-1.5" />
@@ -461,7 +461,7 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
 
           <button
             onClick={onReset}
-            className="inline-flex items-center justify-center px-4 py-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl transition-all cursor-pointer shadow-2xs hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex items-center justify-center px-4 py-2.5 text-xs font-bold text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700/60 rounded-xl transition-all cursor-pointer shadow-2xs hover:scale-[1.02] active:scale-[0.98]"
             id="reset-datasets-btn"
           >
             <Undo2 className="h-3.5 w-3.5 mr-1.5" />
@@ -471,16 +471,16 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
       </div>
 
       {/* 2. Interactive Filtering Deck */}
-      <div className="bg-white/90 backdrop-blur-md rounded-2xl border border-slate-200/80 p-6 shadow-xs space-y-4 hover:shadow-sm transition-all duration-300" id="filtering-panel">
-        <div className="flex items-center justify-between border-b border-slate-100 pb-3.5">
-          <div className="flex items-center space-x-2 text-slate-800">
-            <Filter className="h-4.5 w-4.5 text-indigo-600" />
-            <h2 className="font-bold text-sm tracking-tight font-display text-slate-900">Active Filters Desk</h2>
+      <div className="bg-[#0d1527]/90 backdrop-blur-md rounded-2xl border border-slate-800 p-6 shadow-md space-y-4 hover:shadow-lg transition-all duration-300" id="filtering-panel">
+        <div className="flex items-center justify-between border-b border-slate-800/80 pb-3.5">
+          <div className="flex items-center space-x-2 text-slate-100">
+            <Filter className="h-4.5 w-4.5 text-indigo-400" />
+            <h2 className="font-bold text-sm tracking-tight font-display text-slate-100">Active Filters Desk</h2>
           </div>
           {(weekFilter !== "All" || regionFilter !== "All" || cityFilter !== "All" || formatFilter !== "All" || storeFilter !== "All" || categoryFilter !== "All" || searchTextInput !== "") && (
             <button
               onClick={handleClearFilters}
-              className="text-xs font-bold text-rose-600 hover:text-rose-700 hover:underline cursor-pointer flex items-center transition"
+              className="text-xs font-bold text-rose-400 hover:text-rose-300 hover:underline cursor-pointer flex items-center transition"
             >
               Clear All Filters
             </button>
@@ -497,7 +497,7 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
             <select
               value={weekFilter}
               onChange={(e) => setWeekFilter(e.target.value)}
-              className="w-full text-xs border border-slate-200 rounded-lg px-2.5 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-slate-700 font-medium cursor-pointer transition hover:border-slate-300"
+              className="w-full text-xs border border-slate-800 rounded-lg px-2.5 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-[#131b2e] text-slate-200 font-medium cursor-pointer transition hover:border-slate-700"
             >
               <option value="All">All Weeks ({filterOptions.weeks.length})</option>
               {filterOptions.weeks.map(w => (
@@ -514,7 +514,7 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
             <select
               value={regionFilter}
               onChange={(e) => setRegionFilter(e.target.value)}
-              className="w-full text-xs border border-slate-200 rounded-lg px-2.5 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-slate-700 font-medium cursor-pointer transition hover:border-slate-300"
+              className="w-full text-xs border border-slate-800 rounded-lg px-2.5 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-[#131b2e] text-slate-200 font-medium cursor-pointer transition hover:border-slate-700"
             >
               <option value="All">All Regions</option>
               {filterOptions.regions.map(r => (
@@ -531,7 +531,7 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
             <select
               value={cityFilter}
               onChange={(e) => setCityFilter(e.target.value)}
-              className="w-full text-xs border border-slate-200 rounded-lg px-2.5 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-slate-700 font-medium cursor-pointer transition hover:border-slate-300"
+              className="w-full text-xs border border-slate-800 rounded-lg px-2.5 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-[#131b2e] text-slate-200 font-medium cursor-pointer transition hover:border-slate-700"
             >
               <option value="All">All Cities</option>
               {filterOptions.cities.map(c => (
@@ -548,7 +548,7 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
             <select
               value={formatFilter}
               onChange={(e) => setFormatFilter(e.target.value)}
-              className="w-full text-xs border border-slate-200 rounded-lg px-2.5 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-slate-700 font-medium cursor-pointer transition hover:border-slate-300"
+              className="w-full text-xs border border-slate-800 rounded-lg px-2.5 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-[#131b2e] text-slate-200 font-medium cursor-pointer transition hover:border-slate-700"
             >
               <option value="All">All Formats</option>
               {filterOptions.formats.map(f => (
@@ -565,7 +565,7 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
             <select
               value={storeFilter}
               onChange={(e) => setStoreFilter(e.target.value)}
-              className="w-full text-xs border border-slate-200 rounded-lg px-2.5 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-slate-700 font-medium cursor-pointer transition hover:border-slate-300"
+              className="w-full text-xs border border-slate-800 rounded-lg px-2.5 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-[#131b2e] text-slate-200 font-medium cursor-pointer transition hover:border-slate-700"
             >
               <option value="All">All Stores</option>
               {filterOptions.stores.map(s => (
@@ -582,7 +582,7 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="w-full text-xs border border-slate-200 rounded-lg px-2.5 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-slate-700 font-medium cursor-pointer transition hover:border-slate-300"
+              className="w-full text-xs border border-slate-800 rounded-lg px-2.5 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-[#131b2e] text-slate-200 font-medium cursor-pointer transition hover:border-slate-700"
             >
               <option value="All">All Categories</option>
               {filterOptions.categories.map(c => (
@@ -601,7 +601,7 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
             placeholder="Global text search across Store ID, Name, City, Format, Category..."
             value={searchTextInput}
             onChange={(e) => setSearchTextInput(e.target.value)}
-            className="pl-9 pr-4 py-2 w-full text-xs border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-slate-800 placeholder-slate-400"
+            className="pl-9 pr-4 py-2 w-full text-xs border border-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-[#131b2e] text-slate-100 placeholder-slate-500"
           />
         </div>
       </div>
@@ -627,17 +627,17 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5" id="kpi-grid">
             
             {/* KPI 1: Net Sales */}
-            <div className="bg-white/90 backdrop-blur-xs rounded-2xl border border-slate-200/85 p-6 shadow-xs flex flex-col justify-between hover:shadow-md hover:border-indigo-300/80 hover:-translate-y-0.5 transition-all duration-300" id="kpi-net-sales">
+            <div className="bg-[#0d1527]/90 backdrop-blur-xs rounded-2xl border border-slate-800 p-6 shadow-xs flex flex-col justify-between hover:shadow-md hover:border-indigo-500/50 hover:-translate-y-0.5 transition-all duration-300" id="kpi-net-sales">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-bold text-slate-400 tracking-wider uppercase font-display">Net Sales</span>
-                <div className="p-2.5 bg-indigo-50 text-indigo-600 rounded-xl shrink-0 shadow-2xs">
+                <div className="p-2.5 bg-indigo-500/15 text-indigo-400 rounded-xl shrink-0 shadow-2xs">
                   <DollarSign className="h-4 w-4" />
                 </div>
               </div>
               <div className="mt-5">
-                <h3 className="text-2xl font-black text-slate-900 tracking-tight font-display">{formatValue(metrics.totalNetSales)}</h3>
-                <div className="flex items-center text-xs mt-1.5 text-slate-500 truncate">
-                  <span className="font-semibold text-slate-700 mr-1">Target: {formatValue(metrics.totalSalesTarget)}</span>
+                <h3 className="text-2xl font-black text-white tracking-tight font-display">{formatValue(metrics.totalNetSales)}</h3>
+                <div className="flex items-center text-xs mt-1.5 text-slate-300 truncate">
+                  <span className="font-semibold text-slate-200 mr-1">Target: {formatValue(metrics.totalSalesTarget)}</span>
                 </div>
                 <div className="text-[10px] text-slate-400 mt-1 font-mono">
                   Gross: {formatValue(metrics.totalGrossSales)}
@@ -646,24 +646,24 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
             </div>
 
             {/* KPI 2: Target Achievement */}
-            <div className="bg-white/90 backdrop-blur-xs rounded-2xl border border-slate-200/85 p-6 shadow-xs flex flex-col justify-between hover:shadow-md hover:border-emerald-300/80 hover:-translate-y-0.5 transition-all duration-300" id="kpi-achievement">
+            <div className="bg-[#0d1527]/90 backdrop-blur-xs rounded-2xl border border-slate-800 p-6 shadow-xs flex flex-col justify-between hover:shadow-md hover:border-emerald-500/50 hover:-translate-y-0.5 transition-all duration-300" id="kpi-achievement">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-bold text-slate-400 tracking-wider uppercase font-display">Target Achieved</span>
-                <div className="p-2.5 bg-emerald-50 text-emerald-600 rounded-xl shrink-0 shadow-2xs">
+                <div className="p-2.5 bg-emerald-500/15 text-emerald-400 rounded-xl shrink-0 shadow-2xs">
                   <Activity className="h-4 w-4" />
                 </div>
               </div>
               <div className="mt-5">
-                <h3 className="text-2xl font-black text-slate-900 tracking-tight font-display">{formatPercent(metrics.achievementRate)}</h3>
+                <h3 className="text-2xl font-black text-white tracking-tight font-display">{formatPercent(metrics.achievementRate)}</h3>
                 <div className="flex items-center text-xs mt-1.5">
-                  <span className={`font-bold px-2 py-0.5 rounded-md text-[10px] ${metrics.achievementRate >= 100 ? 'bg-emerald-50 text-emerald-700 border border-emerald-100/50' : 'bg-amber-50 text-amber-700 border border-amber-100/50'}`}>
+                  <span className={`font-bold px-2 py-0.5 rounded-md text-[10px] ${metrics.achievementRate >= 100 ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/20' : 'bg-amber-500/15 text-amber-400 border border-amber-500/20'}`}>
                     {metrics.achievementRate >= 100 ? "Goal Met" : "Target Gap"}
                   </span>
                 </div>
                 {/* Achievement progress bar */}
-                <div className="w-full bg-slate-100 rounded-full h-1.5 mt-3.5 overflow-hidden">
+                <div className="w-full bg-slate-800 rounded-full h-1.5 mt-3.5 overflow-hidden">
                   <div
-                    className={`h-1.5 rounded-full ${metrics.achievementRate >= 100 ? 'bg-emerald-500' : 'bg-indigo-600'}`}
+                    className={`h-1.5 rounded-full ${metrics.achievementRate >= 100 ? 'bg-emerald-500' : 'bg-indigo-500'}`}
                     style={{ width: `${Math.min(100, metrics.achievementRate)}%` }}
                   ></div>
                 </div>
@@ -671,17 +671,17 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
             </div>
 
             {/* KPI 3: ATV */}
-            <div className="bg-white/90 backdrop-blur-xs rounded-2xl border border-slate-200/85 p-6 shadow-xs flex flex-col justify-between hover:shadow-md hover:border-cyan-300/80 hover:-translate-y-0.5 transition-all duration-300" id="kpi-atv">
+            <div className="bg-[#0d1527]/90 backdrop-blur-xs rounded-2xl border border-slate-800 p-6 shadow-xs flex flex-col justify-between hover:shadow-md hover:border-cyan-500/50 hover:-translate-y-0.5 transition-all duration-300" id="kpi-atv">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-bold text-slate-400 tracking-wider uppercase font-display">Avg Transaction (ATV)</span>
-                <div className="p-2.5 bg-cyan-50 text-cyan-600 rounded-xl shrink-0 shadow-2xs">
+                <div className="p-2.5 bg-cyan-500/15 text-cyan-400 rounded-xl shrink-0 shadow-2xs">
                   <ShoppingBag className="h-4 w-4" />
                 </div>
               </div>
               <div className="mt-5">
-                <h3 className="text-2xl font-black text-slate-900 tracking-tight font-display">{formatValue(metrics.atv)}</h3>
-                <div className="flex items-center text-xs mt-1.5 text-slate-500 truncate">
-                  <span className="font-semibold text-slate-700">{formatNumberCompact(metrics.totalTransactions)} Tickets</span>
+                <h3 className="text-2xl font-black text-white tracking-tight font-display">{formatValue(metrics.atv)}</h3>
+                <div className="flex items-center text-xs mt-1.5 text-slate-300 truncate">
+                  <span className="font-semibold text-slate-200">{formatNumberCompact(metrics.totalTransactions)} Tickets</span>
                 </div>
                 <div className="text-[10px] text-slate-400 mt-1 font-mono">
                   Items/Ticket: {(metrics.totalUnitsSold / (metrics.totalTransactions || 1)).toFixed(1)}
@@ -690,17 +690,17 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
             </div>
 
             {/* KPI 4: Return Rate */}
-            <div className="bg-white/90 backdrop-blur-xs rounded-2xl border border-slate-200/85 p-6 shadow-xs flex flex-col justify-between hover:shadow-md hover:border-rose-300/80 hover:-translate-y-0.5 transition-all duration-300" id="kpi-return-rate">
+            <div className="bg-[#0d1527]/90 backdrop-blur-xs rounded-2xl border border-slate-800 p-6 shadow-xs flex flex-col justify-between hover:shadow-md hover:border-rose-500/50 hover:-translate-y-0.5 transition-all duration-300" id="kpi-return-rate">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-bold text-slate-400 tracking-wider uppercase font-display">Return Rate</span>
-                <div className="p-2.5 bg-rose-50 text-rose-600 rounded-xl shrink-0 shadow-2xs">
+                <div className="p-2.5 bg-rose-500/15 text-rose-400 rounded-xl shrink-0 shadow-2xs">
                   <AlertTriangle className="h-4 w-4" />
                 </div>
               </div>
               <div className="mt-5">
-                <h3 className="text-2xl font-black text-slate-900 tracking-tight font-display">{formatPercent(metrics.returnsPct)}</h3>
-                <div className="flex items-center text-xs mt-1.5 text-slate-500 truncate">
-                  <span className="font-semibold text-slate-700">Returns: {formatValue(metrics.totalReturns)}</span>
+                <h3 className="text-2xl font-black text-white tracking-tight font-display">{formatPercent(metrics.returnsPct)}</h3>
+                <div className="flex items-center text-xs mt-1.5 text-slate-300 truncate">
+                  <span className="font-semibold text-slate-200">Returns: {formatValue(metrics.totalReturns)}</span>
                 </div>
                 <div className="text-[10px] text-slate-400 mt-1 font-mono">
                   Sentiment score: {metrics.avgCustomerRating.toFixed(2)} ★
@@ -709,17 +709,17 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
             </div>
 
             {/* KPI 5: Discount Rate */}
-            <div className="bg-white/90 backdrop-blur-xs rounded-2xl border border-slate-200/85 p-6 shadow-xs flex flex-col justify-between hover:shadow-md hover:border-pink-300/80 hover:-translate-y-0.5 transition-all duration-300" id="kpi-discount-rate">
+            <div className="bg-[#0d1527]/90 backdrop-blur-xs rounded-2xl border border-slate-800 p-6 shadow-xs flex flex-col justify-between hover:shadow-md hover:border-pink-500/50 hover:-translate-y-0.5 transition-all duration-300" id="kpi-discount-rate">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-bold text-slate-400 tracking-wider uppercase font-display">Discount Rate</span>
-                <div className="p-2.5 bg-pink-50 text-pink-600 rounded-xl shrink-0 shadow-2xs">
+                <div className="p-2.5 bg-pink-500/15 text-pink-400 rounded-xl shrink-0 shadow-2xs">
                   <Percent className="h-4 w-4" />
                 </div>
               </div>
               <div className="mt-5">
-                <h3 className="text-2xl font-black text-slate-900 tracking-tight font-display">{formatPercent(metrics.discountRate)}</h3>
-                <div className="flex items-center text-xs mt-1.5 text-slate-500 truncate">
-                  <span className="font-semibold text-slate-700">Discounts: {formatValue(metrics.totalDiscountAmount)}</span>
+                <h3 className="text-2xl font-black text-white tracking-tight font-display">{formatPercent(metrics.discountRate)}</h3>
+                <div className="flex items-center text-xs mt-1.5 text-slate-300 truncate">
+                  <span className="font-semibold text-slate-200">Discounts: {formatValue(metrics.totalDiscountAmount)}</span>
                 </div>
                 <div className="text-[10px] text-slate-400 mt-1 font-mono">
                   Promo ROI: {metrics.marketingROI.toFixed(1)}x return
@@ -733,8 +733,8 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8" id="ai-heuristic-desk">
             
             {/* McKinsey Partners AI Executive Summary Card (3/5 Width) */}
-            <div className="lg:col-span-3 flex flex-col bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden hover:shadow-md transition-all duration-300" id="ai-insights-card">
-              <div className="p-5.5 border-b border-slate-200/60 flex items-center justify-between bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white">
+            <div className="lg:col-span-3 flex flex-col bg-[#0d1527]/90 backdrop-blur-md rounded-2xl border border-slate-800 shadow-xs overflow-hidden hover:shadow-md transition-all duration-300" id="ai-insights-card">
+              <div className="p-5.5 border-b border-slate-800/60 flex items-center justify-between bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white">
                 <div className="flex items-center space-x-2">
                   <div className="p-1.5 bg-indigo-500/30 rounded-lg text-indigo-400 shrink-0">
                     <Sparkles className="h-4.5 w-4.5" />
@@ -752,7 +752,7 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
                 ) : isAiStale ? (
                   <button
                     onClick={() => fetchAiSummary(metrics)}
-                    className="inline-flex items-center justify-center px-2.5 py-1 text-[10px] font-bold text-amber-800 bg-amber-100 border border-amber-300 rounded-full hover:bg-amber-200 animate-bounce transition cursor-pointer"
+                    className="inline-flex items-center justify-center px-2.5 py-1 text-[10px] font-bold text-amber-300 bg-amber-500/15 border border-amber-500/30 rounded-full hover:bg-amber-500/25 animate-bounce transition cursor-pointer"
                   >
                     Sync Filters
                   </button>
@@ -769,46 +769,46 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
 
               <div className="p-6 flex-1 flex flex-col justify-between min-h-[350px]" id="ai-body">
                 {isAiStale && !aiLoading && (
-                  <div className="mb-4 bg-amber-50 border border-amber-100 text-amber-800 p-3 rounded-lg text-xs flex items-start space-x-2 animate-fade-in">
-                    <AlertTriangle className="h-4 w-4 shrink-0 text-amber-600 mt-0.5" />
+                  <div className="mb-4 bg-amber-500/10 border border-amber-500/20 text-amber-300 p-3 rounded-lg text-xs flex items-start space-x-2 animate-fade-in">
+                    <AlertTriangle className="h-4 w-4 shrink-0 text-amber-400 mt-0.5" />
                     <div>
-                      <span className="font-bold">Filters Changed:</span> The AI Briefing text matches your previous view. Click <button onClick={() => fetchAiSummary(metrics)} className="font-black underline text-indigo-600 hover:text-indigo-800">Sync Filters</button> above to re-generate the briefing on the active subset.
+                      <span className="font-bold">Filters Changed:</span> The AI Briefing text matches your previous view. Click <button onClick={() => fetchAiSummary(metrics)} className="font-black underline text-indigo-400 hover:text-indigo-300">Sync Filters</button> above to re-generate the briefing on the active subset.
                     </div>
                   </div>
                 )}
 
                 {aiLoading ? (
                   <div className="space-y-4 animate-pulse flex-1">
-                    <div className="h-5 bg-slate-100 rounded w-1/4"></div>
+                    <div className="h-5 bg-slate-800 rounded w-1/4"></div>
                     <div className="space-y-2">
-                      <div className="h-4 bg-slate-100 rounded"></div>
-                      <div className="h-4 bg-slate-100 rounded w-5/6"></div>
-                      <div className="h-4 bg-slate-100 rounded w-4/5"></div>
+                      <div className="h-4 bg-slate-800 rounded"></div>
+                      <div className="h-4 bg-slate-800 rounded w-5/6"></div>
+                      <div className="h-4 bg-slate-800 rounded w-4/5"></div>
                     </div>
-                    <div className="h-5 bg-slate-100 rounded w-1/3 mt-6"></div>
+                    <div className="h-5 bg-slate-800 rounded w-1/3 mt-6"></div>
                     <div className="space-y-2">
-                      <div className="h-4 bg-slate-100 rounded w-11/12"></div>
-                      <div className="h-4 bg-slate-100 rounded w-3/4"></div>
+                      <div className="h-4 bg-slate-800 rounded w-11/12"></div>
+                      <div className="h-4 bg-slate-800 rounded w-3/4"></div>
                     </div>
                   </div>
                 ) : aiError ? (
                   <div className="flex flex-col items-center justify-center py-10 flex-1">
-                    <AlertTriangle className="h-10 w-10 text-amber-500 mb-2" />
-                    <p className="text-xs text-slate-600 font-semibold">{aiError}</p>
+                    <AlertTriangle className="h-10 w-10 text-amber-400 mb-2" />
+                    <p className="text-xs text-slate-300 font-semibold">{aiError}</p>
                     <button
                       onClick={() => fetchAiSummary(metrics)}
-                      className="mt-3 px-3.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition cursor-pointer"
+                      className="mt-3 px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-lg border border-slate-700 transition cursor-pointer"
                     >
                       Retry API connection
                     </button>
                   </div>
                 ) : (
-                  <div className="prose prose-slate max-w-none text-slate-700 text-xs leading-relaxed space-y-4 flex-1">
+                  <div className="prose prose-invert max-w-none text-slate-200 text-xs leading-relaxed space-y-4 flex-1">
                     <ReactMarkdown>{aiSummary}</ReactMarkdown>
                   </div>
                 )}
                 
-                <div className="mt-5 pt-4 border-t border-slate-100 text-[10px] text-slate-400 flex justify-between items-center">
+                <div className="mt-5 pt-4 border-t border-slate-800 text-[10px] text-slate-500 flex justify-between items-center">
                   <span>*Strategic insights based on active multi-dimensional filter state.*</span>
                   <span>Refreshed on-demand</span>
                 </div>
@@ -816,61 +816,61 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
             </div>
 
             {/* Heuristic Operational Audit Card (2/5 Width) */}
-            <div className="lg:col-span-2 flex flex-col bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden hover:shadow-md transition-all duration-300" id="heuristic-insights-card">
-              <div className="p-5.5 border-b border-slate-100/80 bg-slate-50/50 flex items-center justify-between">
+            <div className="lg:col-span-2 flex flex-col bg-[#0d1527]/90 backdrop-blur-md rounded-2xl border border-slate-800 shadow-xs overflow-hidden hover:shadow-md transition-all duration-300" id="heuristic-insights-card">
+              <div className="p-5.5 border-b border-slate-800 bg-[#131b2e]/50 flex items-center justify-between">
                 <div>
-                  <h2 className="font-bold text-slate-800 text-sm">Strategic Performance Audit</h2>
+                  <h2 className="font-bold text-slate-100 text-sm">Strategic Performance Audit</h2>
                   <p className="text-[10px] text-slate-400">Deterministic metrics computed in real-time</p>
                 </div>
-                <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-indigo-50 text-indigo-700">
+                <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-indigo-500/15 text-indigo-400">
                   Live Audit
                 </span>
               </div>
 
-              <div className="p-5 flex-1 space-y-5 text-xs text-slate-700" id="heuristic-body">
+              <div className="p-5 flex-1 space-y-5 text-xs text-slate-300" id="heuristic-body">
                 
                 {/* Heuristic 1: Regional Performer Highlights */}
-                <div className="space-y-2 border-b border-slate-100 pb-4">
-                  <div className="flex items-center space-x-1.5 text-slate-900 font-bold text-xs uppercase tracking-wider">
-                    <Trophy className="h-4 w-4 text-amber-500" />
+                <div className="space-y-2 border-b border-slate-800 pb-4">
+                  <div className="flex items-center space-x-1.5 text-slate-200 font-bold text-xs uppercase tracking-wider">
+                    <Trophy className="h-4 w-4 text-amber-400" />
                     <span>Regional Standings</span>
                   </div>
                   <div className="grid grid-cols-2 gap-3 pt-1">
-                    <div className="bg-emerald-50/60 p-2.5 rounded-lg border border-emerald-100">
-                      <span className="text-[10px] font-semibold text-emerald-800 uppercase block">Top Regional Revenue</span>
-                      <span className="font-bold text-slate-900 block mt-1 truncate">{heuristicInsights?.bestRegionName}</span>
-                      <span className="text-[10px] text-slate-500 font-mono">{formatValue(heuristicInsights?.bestRegionSales || 0)} ({heuristicInsights?.bestRegionAch.toFixed(1)}%)</span>
+                    <div className="bg-emerald-500/10 p-2.5 rounded-lg border border-emerald-500/20">
+                      <span className="text-[10px] font-semibold text-emerald-400 uppercase block">Top Regional Revenue</span>
+                      <span className="font-bold text-white block mt-1 truncate">{heuristicInsights?.bestRegionName}</span>
+                      <span className="text-[10px] text-slate-400 font-mono">{formatValue(heuristicInsights?.bestRegionSales || 0)} ({heuristicInsights?.bestRegionAch.toFixed(1)}%)</span>
                     </div>
-                    <div className="bg-rose-50/60 p-2.5 rounded-lg border border-rose-100">
-                      <span className="text-[10px] font-semibold text-rose-800 uppercase block">Underperforming Region</span>
-                      <span className="font-bold text-slate-900 block mt-1 truncate">{heuristicInsights?.worstRegionName}</span>
-                      <span className="text-[10px] text-slate-500 font-mono">{formatValue(heuristicInsights?.worstRegionSales || 0)} ({heuristicInsights?.worstRegionAch.toFixed(1)}%)</span>
+                    <div className="bg-rose-500/10 p-2.5 rounded-lg border border-rose-500/20">
+                      <span className="text-[10px] font-semibold text-rose-400 uppercase block">Underperforming Region</span>
+                      <span className="font-bold text-white block mt-1 truncate">{heuristicInsights?.worstRegionName}</span>
+                      <span className="text-[10px] text-slate-400 font-mono">{formatValue(heuristicInsights?.worstRegionSales || 0)} ({heuristicInsights?.worstRegionAch.toFixed(1)}%)</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Heuristic 2: Stores Missing Target */}
-                <div className="space-y-2 border-b border-slate-100 pb-4">
+                <div className="space-y-2 border-b border-slate-800 pb-4">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-1.5 text-slate-900 font-bold text-xs uppercase tracking-wider">
-                      <AlertTriangle className="h-4 w-4 text-rose-500" />
+                    <div className="flex items-center space-x-1.5 text-slate-200 font-bold text-xs uppercase tracking-wider">
+                      <AlertTriangle className="h-4 w-4 text-rose-400" />
                       <span>Stores Missing Target</span>
                     </div>
-                    <span className="font-mono text-[10px] text-slate-500 font-bold bg-slate-100 px-1.5 py-0.5 rounded">
+                    <span className="font-mono text-[10px] text-slate-300 font-bold bg-slate-800 px-1.5 py-0.5 rounded border border-slate-700/40">
                       {heuristicInsights?.missingTargetCount} / {heuristicInsights?.totalStoresCount} venues
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-500 leading-normal">
-                    <span className="font-bold text-rose-600">{heuristicInsights?.missingTargetPct.toFixed(1)}%</span> of active venues are currently underperforming their net sales budget targets.
+                  <p className="text-[11px] text-slate-300 leading-normal">
+                    <span className="font-bold text-rose-400">{heuristicInsights?.missingTargetPct.toFixed(1)}%</span> of active venues are currently underperforming their net sales budget targets.
                   </p>
                   
                   {heuristicInsights && heuristicInsights.topDeficits.length > 0 && (
                     <div className="pt-2 space-y-1.5">
                       <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Largest Revenue Deficits:</span>
                       {heuristicInsights.topDeficits.map((s) => (
-                        <div key={s.store_id} className="flex items-center justify-between text-[11px] p-1.5 bg-slate-50 rounded border border-slate-100">
-                          <span className="font-bold text-slate-700 truncate max-w-[150px]">{s.store_name}</span>
-                          <span className="text-slate-500 font-mono text-xs font-bold">Missing {formatValue(s.deficit)}</span>
+                        <div key={s.store_id} className="flex items-center justify-between text-[11px] p-1.5 bg-[#131b2e] rounded border border-slate-800">
+                          <span className="font-bold text-slate-200 truncate max-w-[150px]">{s.store_name}</span>
+                          <span className="text-rose-400 font-mono text-xs font-bold">Missing {formatValue(s.deficit)}</span>
                         </div>
                       ))}
                     </div>
@@ -878,22 +878,22 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
                 </div>
 
                 {/* Heuristic 3: High Return Categories */}
-                <div className="space-y-2 border-b border-slate-100 pb-4">
-                  <div className="flex items-center space-x-1.5 text-slate-900 font-bold text-xs uppercase tracking-wider">
-                    <Percent className="h-4 w-4 text-indigo-600" />
+                <div className="space-y-2 border-b border-slate-800 pb-4">
+                  <div className="flex items-center space-x-1.5 text-slate-200 font-bold text-xs uppercase tracking-wider">
+                    <Percent className="h-4 w-4 text-indigo-400" />
                     <span>High Return Merchandise</span>
                   </div>
-                  <p className="text-[11px] text-slate-500 leading-normal">
-                    Merchandise categories with elevated returns risk. Overall returning segment is <span className="font-bold text-indigo-600 font-mono">{formatPercent(metrics.returnsPct)}</span> of net sales.
+                  <p className="text-[11px] text-slate-300 leading-normal">
+                    Merchandise categories with elevated returns risk. Overall returning segment is <span className="font-bold text-indigo-400 font-mono">{formatPercent(metrics.returnsPct)}</span> of net sales.
                   </p>
                   
                   {heuristicInsights && heuristicInsights.highReturnCategories.length > 0 && (
                     <div className="pt-1 space-y-1.5">
                       {heuristicInsights.highReturnCategories.map((c) => (
-                        <div key={c.category} className="flex justify-between items-center text-[11px] p-1 rounded-sm">
-                          <span className="font-semibold text-slate-700">{c.category}</span>
+                        <div key={c.category} className="flex justify-between items-center text-[11px] p-2 bg-[#131b2e] rounded border border-slate-800">
+                          <span className="font-semibold text-slate-200">{c.category}</span>
                           <div className="flex items-center space-x-2">
-                            <span className="font-mono text-xs text-rose-600 font-bold">{c.returnRate.toFixed(1)}% return rate</span>
+                            <span className="font-mono text-xs text-rose-400 font-bold">{c.returnRate.toFixed(1)}% return rate</span>
                             <span className="text-[10px] text-slate-400">({formatValue(c.returns)})</span>
                           </div>
                         </div>
@@ -905,11 +905,11 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
                 {/* Heuristic 4: Supply Chain & Stockout Risks */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-1.5 text-slate-900 font-bold text-xs uppercase tracking-wider">
-                      <Activity className="h-4 w-4 text-pink-600" />
+                    <div className="flex items-center space-x-1.5 text-slate-200 font-bold text-xs uppercase tracking-wider">
+                      <Activity className="h-4 w-4 text-pink-400" />
                       <span>Stockout Hazard Venues</span>
                     </div>
-                    <span className="font-mono text-[10px] text-slate-500 font-bold bg-slate-100 px-1.5 py-0.5 rounded">
+                    <span className="font-mono text-[10px] text-slate-300 font-bold bg-slate-800 px-1.5 py-0.5 rounded border border-slate-700/40">
                       {metrics.totalStockouts} weekly stockouts
                     </span>
                   </div>
@@ -917,17 +917,17 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
                   {heuristicInsights && heuristicInsights.stockoutHotspots.length > 0 ? (
                     <div className="pt-1.5 space-y-1.5">
                       {heuristicInsights.stockoutHotspots.map((s) => (
-                        <div key={s.store_id} className="flex items-center justify-between text-[11px] p-1.5 bg-amber-50/50 border border-amber-100 rounded">
+                        <div key={s.store_id} className="flex items-center justify-between text-[11px] p-1.5 bg-amber-500/10 border border-amber-500/20 rounded">
                           <div className="flex items-center space-x-2">
-                            <span className="font-bold text-slate-700">{s.store_name}</span>
+                            <span className="font-bold text-slate-200">{s.store_name}</span>
                             <span className="text-[10px] text-slate-400">({s.region})</span>
                           </div>
-                          <span className="font-bold font-mono text-amber-700">{s.stockouts} Stockouts</span>
+                          <span className="font-bold font-mono text-amber-400">{s.stockouts} Stockouts</span>
                         </div>
                       ))}
                     </div>
                   ) : (
-                    <p className="text-[11px] text-slate-500 italic">No inventory stockout incidents flagged in current view.</p>
+                    <p className="text-[11px] text-slate-400 italic">No inventory stockout incidents flagged in current view.</p>
                   )}
                 </div>
 
@@ -940,9 +940,9 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="charts-panel">
             
             {/* Chart 1: Weekly Revenue Trend */}
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden flex flex-col justify-between hover:shadow-md hover:border-indigo-300/40 hover:-translate-y-0.5 transition-all duration-300" id="trend-card">
-              <div className="p-5 border-b border-slate-100/80 bg-slate-50/40">
-                <h3 className="font-bold text-slate-800 text-sm">Weekly Revenue Trend</h3>
+            <div className="bg-[#0d1527]/90 backdrop-blur-xs rounded-2xl border border-slate-800 shadow-xs overflow-hidden flex flex-col justify-between hover:shadow-md hover:border-indigo-500/50 hover:-translate-y-0.5 transition-all duration-300" id="trend-card">
+              <div className="p-5 border-b border-slate-800 bg-[#131b2e]/50">
+                <h3 className="font-bold text-slate-100 text-sm">Weekly Revenue Trend</h3>
                 <p className="text-[10px] text-slate-400">Chronological historical net sales vs budget targets</p>
               </div>
               <div className="p-5 flex-1 flex flex-col justify-between">
@@ -958,11 +958,11 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
                           <stop offset="95%" stopColor="#6366f1" stopOpacity={0}/>
                         </linearGradient>
                       </defs>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
-                      <XAxis dataKey="week" tick={{ fill: "#64748b", fontSize: 9 }} tickLine={false} axisLine={false} />
-                      <YAxis tickFormatter={(val) => `₹${(val / 1000).toFixed(0)}K`} tickLine={false} axisLine={false} tick={{ fill: "#64748b", fontSize: 9 }} />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />
+                      <XAxis dataKey="week" tick={{ fill: "#94a3b8", fontSize: 9 }} tickLine={false} axisLine={false} />
+                      <YAxis tickFormatter={(val) => `₹${(val / 1000).toFixed(0)}K`} tickLine={false} axisLine={false} tick={{ fill: "#94a3b8", fontSize: 9 }} />
                       <Tooltip
-                        contentStyle={{ backgroundColor: "#0f172a", borderRadius: "8px", border: "none" }}
+                        contentStyle={{ backgroundColor: "#0f172a", borderRadius: "8px", border: "1px solid #1e293b" }}
                         itemStyle={{ color: "#fff", fontSize: "11px" }}
                         labelFormatter={(label) => `Week Starting: ${label}`}
                         formatter={(value: any) => [`₹${Number(value).toLocaleString("en-IN", { maximumFractionDigits: 0 })}`, undefined]}
@@ -975,7 +975,7 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
 
                 <div className="flex justify-between items-center mt-4 text-[11px] text-slate-400 font-semibold uppercase tracking-wider">
                   <span>Chronological Weeks: {metrics.weeklyTrend.length}</span>
-                  <span className="flex items-center text-indigo-600 font-bold">
+                  <span className="flex items-center text-indigo-400 font-bold">
                     <ArrowUpRight className="h-3.5 w-3.5 mr-1" /> Dynamic Scaling
                   </span>
                 </div>
@@ -983,9 +983,9 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
             </div>
 
             {/* Chart 2: Sales & Targets by Region */}
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden flex flex-col justify-between hover:shadow-md hover:border-indigo-300/40 hover:-translate-y-0.5 transition-all duration-300" id="regional-card">
-              <div className="p-5 border-b border-slate-100/80 bg-slate-50/40">
-                <h3 className="font-bold text-slate-800 text-sm">Regional Revenue vs Target</h3>
+            <div className="bg-[#0d1527]/90 backdrop-blur-xs rounded-2xl border border-slate-800 shadow-xs overflow-hidden flex flex-col justify-between hover:shadow-md hover:border-indigo-500/50 hover:-translate-y-0.5 transition-all duration-300" id="regional-card">
+              <div className="p-5 border-b border-slate-800 bg-[#131b2e]/50">
+                <h3 className="font-bold text-slate-100 text-sm">Regional Revenue vs Target</h3>
                 <p className="text-[10px] text-slate-400">Net revenue compared side-by-side with budgets</p>
               </div>
               <div className="p-5 flex-1 flex flex-col justify-between">
@@ -995,11 +995,11 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
                       data={metrics.regionalPerformance}
                       margin={{ top: 10, right: 5, bottom: 0, left: -25 }}
                     >
-                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                      <XAxis dataKey="region" tickLine={false} axisLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
-                      <YAxis tickLine={false} axisLine={false} tick={{ fill: "#64748b", fontSize: 9 }} tickFormatter={(val) => `₹${(val / 1000).toFixed(0)}K`} />
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#1e293b" />
+                      <XAxis dataKey="region" tickLine={false} axisLine={false} tick={{ fill: "#94a3b8", fontSize: 10 }} />
+                      <YAxis tickLine={false} axisLine={false} tick={{ fill: "#94a3b8", fontSize: 9 }} tickFormatter={(val) => `₹${(val / 1000).toFixed(0)}K`} />
                       <Tooltip
-                        contentStyle={{ backgroundColor: "#0f172a", borderRadius: "8px", border: "none" }}
+                        contentStyle={{ backgroundColor: "#0f172a", borderRadius: "8px", border: "1px solid #1e293b" }}
                         itemStyle={{ color: "#fff", fontSize: "11px" }}
                         formatter={(value: any) => [`₹${Number(value).toLocaleString("en-IN", { maximumFractionDigits: 0 })}`, undefined]}
                       />
@@ -1011,15 +1011,15 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
 
                 <div className="flex justify-between items-center mt-4 text-[11px] text-slate-400 font-semibold uppercase tracking-wider">
                   <span>Regions: {metrics.regionalPerformance.length}</span>
-                  <span className="text-emerald-600 font-bold">Budget Comparisons</span>
+                  <span className="text-emerald-400 font-bold">Budget Comparisons</span>
                 </div>
               </div>
             </div>
 
             {/* Chart 3: Product Category Performance */}
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden flex flex-col justify-between hover:shadow-md hover:border-indigo-300/40 hover:-translate-y-0.5 transition-all duration-300" id="category-card">
-              <div className="p-5 border-b border-slate-100/80 bg-slate-50/40">
-                <h3 className="font-bold text-slate-800 text-sm">Product Category Performance</h3>
+            <div className="bg-[#0d1527]/90 backdrop-blur-xs rounded-2xl border border-slate-800 shadow-xs overflow-hidden flex flex-col justify-between hover:shadow-md hover:border-indigo-500/50 hover:-translate-y-0.5 transition-all duration-300" id="category-card">
+              <div className="p-5 border-b border-slate-800 bg-[#131b2e]/50">
+                <h3 className="font-bold text-slate-100 text-sm">Product Category Performance</h3>
                 <p className="text-[10px] text-slate-400">Revenue split and volume by product category</p>
               </div>
               <div className="p-5 flex-1 flex flex-col justify-between">
@@ -1030,11 +1030,11 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
                       layout="vertical"
                       margin={{ top: 0, right: 10, bottom: 0, left: -20 }}
                     >
-                      <CartesianGrid strokeDasharray="3 3" horizontal stroke="#f1f5f9" vertical={false} />
+                      <CartesianGrid strokeDasharray="3 3" horizontal stroke="#1e293b" vertical={false} />
                       <XAxis type="number" hide />
-                      <YAxis type="category" dataKey="category" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} width={85} />
+                      <YAxis type="category" dataKey="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 10 }} width={85} />
                       <Tooltip
-                        contentStyle={{ backgroundColor: "#0f172a", borderRadius: "8px", border: "none" }}
+                        contentStyle={{ backgroundColor: "#0f172a", borderRadius: "8px", border: "1px solid #1e293b" }}
                         itemStyle={{ color: "#fff", fontSize: "11px" }}
                         formatter={(value: any) => [`₹${Number(value).toLocaleString("en-IN", { maximumFractionDigits: 0 })}`, undefined]}
                       />
@@ -1045,8 +1045,8 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
 
                 <div className="space-y-1.5 mt-2" id="category-mini-legend">
                   {metrics.categoryPerformance.slice(0, 3).map((cat) => (
-                    <div key={cat.category} className="flex justify-between text-[11px] text-slate-500">
-                      <span className="font-semibold truncate max-w-[120px]">{cat.category}</span>
+                    <div key={cat.category} className="flex justify-between text-[11px] text-slate-300">
+                      <span className="font-semibold truncate max-w-[120px] text-slate-200">{cat.category}</span>
                       <span>{formatValue(cat.netSales)} <span className="font-mono text-[9px] text-slate-400">({cat.returnRate.toFixed(1)}% ret)</span></span>
                     </div>
                   ))}
@@ -1055,9 +1055,9 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
             </div>
 
             {/* Chart 4: Store Leaderboard */}
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden flex flex-col justify-between hover:shadow-md hover:border-indigo-300/40 hover:-translate-y-0.5 transition-all duration-300" id="leaderboard-card">
-              <div className="p-5 border-b border-slate-100/80 bg-slate-50/40">
-                <h3 className="font-bold text-slate-800 text-sm">Store Performance Leaderboard</h3>
+            <div className="bg-[#0d1527]/90 backdrop-blur-xs rounded-2xl border border-slate-800 shadow-xs overflow-hidden flex flex-col justify-between hover:shadow-md hover:border-indigo-500/50 hover:-translate-y-0.5 transition-all duration-300" id="leaderboard-card">
+              <div className="p-5 border-b border-slate-800 bg-[#131b2e]/50">
+                <h3 className="font-bold text-slate-100 text-sm">Store Performance Leaderboard</h3>
                 <p className="text-[10px] text-slate-400">Top 8 stores by Net Revenue contribution</p>
               </div>
               <div className="p-5 flex-1 flex flex-col justify-between">
@@ -1068,11 +1068,11 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
                       layout="vertical"
                       margin={{ top: 0, right: 10, bottom: 0, left: -20 }}
                     >
-                      <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />
                       <XAxis type="number" hide />
-                      <YAxis type="category" dataKey="store_name" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} width={90} />
+                      <YAxis type="category" dataKey="store_name" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 10 }} width={90} />
                       <Tooltip
-                        contentStyle={{ backgroundColor: "#0f172a", borderRadius: "8px", border: "none" }}
+                        contentStyle={{ backgroundColor: "#0f172a", borderRadius: "8px", border: "1px solid #1e293b" }}
                         itemStyle={{ color: "#fff", fontSize: "11px" }}
                         formatter={(value: any) => [`₹${Number(value).toLocaleString("en-IN", { maximumFractionDigits: 0 })}`, undefined]}
                       />
@@ -1083,15 +1083,15 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
 
                 <div className="mt-4 flex justify-between items-center text-[10px] text-slate-400 uppercase tracking-wider font-semibold">
                   <span>Top Store: {leaderboardData[0]?.store_name || "N/A"}</span>
-                  <span className="text-emerald-600 font-bold">Leaders Sorted</span>
+                  <span className="text-emerald-400 font-bold">Leaders Sorted</span>
                 </div>
               </div>
             </div>
 
             {/* Chart 5: Supply Chain Stockout Risks */}
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden flex flex-col justify-between hover:shadow-md hover:border-indigo-300/40 hover:-translate-y-0.5 transition-all duration-300" id="stockouts-card">
-              <div className="p-5 border-b border-slate-100/80 bg-slate-50/40">
-                <h3 className="font-bold text-slate-800 text-sm">Weekly Stockout Incidents</h3>
+            <div className="bg-[#0d1527]/90 backdrop-blur-xs rounded-2xl border border-slate-800 shadow-xs overflow-hidden flex flex-col justify-between hover:shadow-md hover:border-indigo-500/50 hover:-translate-y-0.5 transition-all duration-300" id="stockouts-card">
+              <div className="p-5 border-b border-slate-800 bg-[#131b2e]/50">
+                <h3 className="font-bold text-slate-100 text-sm">Weekly Stockout Incidents</h3>
                 <p className="text-[10px] text-slate-400">Supply chain stockout risk pacing over weeks</p>
               </div>
               <div className="p-5 flex-1 flex flex-col justify-between">
@@ -1101,11 +1101,11 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
                       data={metrics.weeklyTrend}
                       margin={{ top: 15, right: 10, bottom: 0, left: -25 }}
                     >
-                      <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
-                      <XAxis dataKey="week" tick={{ fill: "#64748b", fontSize: 9 }} tickLine={false} axisLine={false} />
-                      <YAxis tickLine={false} axisLine={false} tick={{ fill: "#64748b", fontSize: 9 }} />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />
+                      <XAxis dataKey="week" tick={{ fill: "#94a3b8", fontSize: 9 }} tickLine={false} axisLine={false} />
+                      <YAxis tickLine={false} axisLine={false} tick={{ fill: "#94a3b8", fontSize: 9 }} />
                       <Tooltip
-                        contentStyle={{ backgroundColor: "#0f172a", borderRadius: "8px", border: "none" }}
+                        contentStyle={{ backgroundColor: "#0f172a", borderRadius: "8px", border: "1px solid #1e293b" }}
                         itemStyle={{ color: "#fff", fontSize: "11px" }}
                         labelFormatter={(label) => `Week Starting: ${label}`}
                       />
@@ -1116,15 +1116,15 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
 
                 <div className="mt-4 flex justify-between items-center text-[10px] text-slate-400 uppercase tracking-wider font-semibold">
                   <span>Total stockout incidents: {metrics.totalStockouts}</span>
-                  <span className="text-amber-600 font-bold">Supply Chain Risk</span>
+                  <span className="text-amber-400 font-bold">Supply Chain Risk</span>
                 </div>
               </div>
             </div>
 
             {/* Chart 6: Store Format Contribution Share */}
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden flex flex-col justify-between hover:shadow-md hover:border-indigo-300/40 hover:-translate-y-0.5 transition-all duration-300" id="format-card">
-              <div className="p-5 border-b border-slate-100/80 bg-slate-50/40">
-                <h3 className="font-bold text-slate-800 text-sm">Store Format Share</h3>
+            <div className="bg-[#0d1527]/90 backdrop-blur-xs rounded-2xl border border-slate-800 shadow-xs overflow-hidden flex flex-col justify-between hover:shadow-md hover:border-indigo-500/50 hover:-translate-y-0.5 transition-all duration-300" id="format-card">
+              <div className="p-5 border-b border-slate-800 bg-[#131b2e]/50">
+                <h3 className="font-bold text-slate-100 text-sm">Store Format Share</h3>
                 <p className="text-[10px] text-slate-400">Revenue split across operational store sizes</p>
               </div>
               <div className="p-5 flex-1 flex flex-col justify-between">
@@ -1145,7 +1145,7 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
                         ))}
                       </Pie>
                       <Tooltip
-                        contentStyle={{ backgroundColor: "#0f172a", borderRadius: "8px", border: "none" }}
+                        contentStyle={{ backgroundColor: "#0f172a", borderRadius: "8px", border: "1px solid #1e293b" }}
                         itemStyle={{ color: "#fff", fontSize: "11px" }}
                         formatter={(value: any) => [`₹${Number(value).toLocaleString("en-IN", { maximumFractionDigits: 0 })}`, undefined]}
                       />
@@ -1155,7 +1155,7 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
                 
                 <div className="space-y-1 mt-2" id="format-mini-legend">
                   {metrics.formatPerformance.map((entry, index) => (
-                    <div key={entry.format} className="flex items-center justify-between text-[11px] text-slate-500">
+                    <div key={entry.format} className="flex items-center justify-between text-[11px] text-slate-300">
                       <div className="flex items-center space-x-1.5 truncate max-w-[150px]">
                         <span className="h-1.5 w-1.5 rounded-full shrink-0" style={{ backgroundColor: COLORS_PASTEL[index % COLORS_PASTEL.length] }}></span>
                         <span className="font-medium truncate">{entry.format}</span>
@@ -1170,14 +1170,14 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
           </div>
 
           {/* 6. Store Performance Audit Ledger Table */}
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden hover:shadow-md transition-all duration-300" id="store-ledger-section">
-            <div className="p-5 border-b border-slate-100 bg-slate-50/40 flex flex-col md:flex-row md:items-center md:justify-between gap-4" id="ledger-header">
+          <div className="bg-[#0d1527]/90 backdrop-blur-md rounded-2xl border border-slate-800 shadow-xs overflow-hidden hover:shadow-md transition-all duration-300" id="store-ledger-section">
+            <div className="p-5 border-b border-slate-800 bg-[#131b2e]/50 flex flex-col md:flex-row md:items-center md:justify-between gap-4" id="ledger-header">
               <div>
-                <h2 className="font-bold text-slate-800 text-sm">Store Performance Audit Ledger</h2>
+                <h2 className="font-bold text-slate-100 text-sm">Store Performance Audit Ledger</h2>
                 <p className="text-[10px] text-slate-400">Sort, isolate, and audit store performance under current active filters</p>
               </div>
-              <div className="text-xs text-slate-500 font-medium">
-                Showing <span className="font-bold text-indigo-600">{tableStoresList.length}</span> venues
+              <div className="text-xs text-slate-400 font-medium">
+                Showing <span className="font-bold text-indigo-400">{tableStoresList.length}</span> venues
               </div>
             </div>
 
@@ -1185,50 +1185,50 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
             <div className="overflow-x-auto" id="ledger-table-container">
               <table className="w-full text-left border-collapse" id="ledger-table">
                 <thead>
-                  <tr className="bg-slate-50/50 border-b border-slate-100 text-[10px] text-slate-400 font-bold uppercase tracking-wider">
-                    <th className="px-5 py-3.5 font-mono cursor-pointer hover:bg-slate-100/50" onClick={() => handleSort("store_id")}>
+                  <tr className="bg-[#131b2e]/40 border-b border-slate-800 text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                    <th className="px-5 py-3.5 font-mono cursor-pointer hover:bg-slate-800/50" onClick={() => handleSort("store_id")}>
                       <div className="flex items-center space-x-1.5">
                         <span>ID</span>
                         <ArrowUpDown className="h-3 w-3" />
                       </div>
                     </th>
-                    <th className="px-5 py-3.5 cursor-pointer hover:bg-slate-100/50" onClick={() => handleSort("store_name")}>
+                    <th className="px-5 py-3.5 cursor-pointer hover:bg-slate-800/50" onClick={() => handleSort("store_name")}>
                       <div className="flex items-center space-x-1.5">
                         <span>Store Name</span>
                         <ArrowUpDown className="h-3 w-3" />
                       </div>
                     </th>
-                    <th className="px-5 py-3.5 cursor-pointer hover:bg-slate-100/50" onClick={() => handleSort("region")}>
+                    <th className="px-5 py-3.5 cursor-pointer hover:bg-slate-800/50" onClick={() => handleSort("region")}>
                       <div className="flex items-center space-x-1.5">
                         <span>Region</span>
                         <ArrowUpDown className="h-3 w-3" />
                       </div>
                     </th>
-                    <th className="px-5 py-3.5 cursor-pointer hover:bg-slate-100/50" onClick={() => handleSort("store_format")}>
+                    <th className="px-5 py-3.5 cursor-pointer hover:bg-slate-800/50" onClick={() => handleSort("store_format")}>
                       <div className="flex items-center space-x-1.5">
                         <span>Format</span>
                         <ArrowUpDown className="h-3 w-3" />
                       </div>
                     </th>
-                    <th className="px-5 py-3.5 text-right cursor-pointer hover:bg-slate-100/50" onClick={() => handleSort("netSales")}>
+                    <th className="px-5 py-3.5 text-right cursor-pointer hover:bg-slate-800/50" onClick={() => handleSort("netSales")}>
                       <div className="flex items-center justify-end space-x-1.5">
                         <span>Net Revenue</span>
                         <ArrowUpDown className="h-3 w-3" />
                       </div>
                     </th>
-                    <th className="px-5 py-3.5 text-right cursor-pointer hover:bg-slate-100/50" onClick={() => handleSort("achievementRate")}>
+                    <th className="px-5 py-3.5 text-right cursor-pointer hover:bg-slate-800/50" onClick={() => handleSort("achievementRate")}>
                       <div className="flex items-center justify-end space-x-1.5">
                         <span>Target Achieved</span>
                         <ArrowUpDown className="h-3 w-3" />
                       </div>
                     </th>
-                    <th className="px-5 py-3.5 text-center cursor-pointer hover:bg-slate-100/50" onClick={() => handleSort("stockouts")}>
+                    <th className="px-5 py-3.5 text-center cursor-pointer hover:bg-slate-800/50" onClick={() => handleSort("stockouts")}>
                       <div className="flex items-center justify-center space-x-1.5">
                         <span>Stockouts</span>
                         <ArrowUpDown className="h-3 w-3" />
                       </div>
                     </th>
-                    <th className="px-5 py-3.5 text-center cursor-pointer hover:bg-slate-100/50" onClick={() => handleSort("avgRating")}>
+                    <th className="px-5 py-3.5 text-center cursor-pointer hover:bg-slate-800/50" onClick={() => handleSort("avgRating")}>
                       <div className="flex items-center justify-center space-x-1.5">
                         <span>Rating</span>
                         <ArrowUpDown className="h-3 w-3" />
@@ -1236,51 +1236,51 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 text-xs" id="ledger-table-body">
+                <tbody className="divide-y divide-slate-800/60 text-xs" id="ledger-table-body">
                   {tableStoresList.length > 0 ? (
                     tableStoresList.map((store) => (
-                      <tr key={store.store_id} className="hover:bg-slate-50/50 transition">
-                        <td className="px-5 py-3.5 font-mono font-medium text-slate-400">{store.store_id}</td>
+                      <tr key={store.store_id} className="hover:bg-slate-800/30 transition">
+                        <td className="px-5 py-3.5 font-mono font-medium text-slate-500">{store.store_id}</td>
                         <td className="px-5 py-3.5">
-                          <div className="font-bold text-slate-800">{store.store_name}</div>
+                          <div className="font-bold text-slate-100">{store.store_name}</div>
                           <div className="text-[10px] text-slate-400 mt-0.5">{store.city}</div>
                         </td>
                         <td className="px-5 py-3.5">
-                          <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-600">
+                          <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-slate-800 text-slate-300 border border-slate-700/40">
                             {store.region}
                           </span>
                         </td>
-                        <td className="px-5 py-3.5 text-slate-500 font-medium">{store.store_format}</td>
-                        <td className="px-5 py-3.5 text-right font-semibold text-slate-800">
+                        <td className="px-5 py-3.5 text-slate-300 font-medium">{store.store_format}</td>
+                        <td className="px-5 py-3.5 text-right font-semibold text-white">
                           {formatValue(store.netSales)}
                         </td>
                         <td className="px-5 py-3.5 text-right">
-                          <span className={`inline-flex items-center px-2 py-0.5 rounded font-bold text-[10px] ${
+                          <span className={`inline-flex items-center px-2 py-0.5 rounded font-bold text-[10px] border ${
                             store.achievementRate >= 100
-                              ? "bg-emerald-50 text-emerald-800"
+                              ? "bg-emerald-500/15 text-emerald-400 border-emerald-500/20"
                               : store.achievementRate >= 90
-                              ? "bg-indigo-50 text-indigo-800"
-                              : "bg-red-50 text-red-800"
+                              ? "bg-indigo-500/15 text-indigo-400 border-indigo-500/20"
+                              : "bg-rose-500/15 text-rose-400 border-rose-500/20"
                           }`}>
                             {store.achievementRate.toFixed(1)}%
                           </span>
                         </td>
                         <td className="px-5 py-3.5 text-center">
-                          <span className={`font-mono font-semibold ${store.stockouts > 10 ? "text-red-600 font-bold" : store.stockouts > 0 ? "text-amber-600" : "text-slate-400"}`}>
+                          <span className={`font-mono font-semibold ${store.stockouts > 10 ? "text-rose-400 font-bold" : store.stockouts > 0 ? "text-amber-400" : "text-slate-500"}`}>
                             {store.stockouts}
                           </span>
                         </td>
                         <td className="px-5 py-3.5 text-center">
                           <div className="flex items-center justify-center space-x-1">
-                            <span className="font-bold text-slate-700">{store.avgRating.toFixed(1)}</span>
-                            <Star className={`h-3 w-3 ${store.avgRating >= 4.4 ? "text-amber-500 fill-amber-500" : "text-slate-300"}`} />
+                            <span className="font-bold text-slate-300">{store.avgRating.toFixed(1)}</span>
+                            <Star className={`h-3 w-3 ${store.avgRating >= 4.4 ? "text-amber-400 fill-amber-400" : "text-slate-600"}`} />
                           </div>
                         </td>
                       </tr>
                     ))
                   ) : (
                     <tr>
-                      <td colSpan={8} className="text-center py-10 text-slate-400 font-medium">
+                      <td colSpan={8} className="text-center py-10 text-slate-500 font-medium">
                         No stores matched current filters.
                       </td>
                     </tr>
@@ -1289,7 +1289,7 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
               </table>
             </div>
             
-            <div className="p-4 border-t border-slate-100 bg-slate-50/30 text-right text-[10px] text-slate-400" id="table-footer">
+            <div className="p-4 border-t border-slate-800 bg-[#131b2e]/30 text-right text-[10px] text-slate-500" id="table-footer">
               Audit log completed on {tableStoresList.length} integrated venues
             </div>
           </div>
