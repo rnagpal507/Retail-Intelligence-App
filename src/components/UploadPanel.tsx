@@ -115,6 +115,17 @@ export default function UploadPanel({ onDataLoaded, onUseSampleData }: UploadPan
 
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-12" id="upload-panel-container">
+      {/* Colorful Top Banner */}
+      <div className="mb-10 rounded-2xl overflow-hidden shadow-2xl border border-slate-800/80 aspect-[16/4.5] relative" id="upload-top-banner">
+        <img
+          src="/src/assets/images/retail_banner_1784117784431.jpg"
+          alt="Retail Sales Intelligence Banner"
+          className="w-full h-full object-cover"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#080d1a] via-transparent to-[#080d1a]/20" />
+      </div>
+
       {/* Header Banner */}
       <div className="text-center mb-12" id="upload-header">
         <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl font-display bg-gradient-to-r from-white via-indigo-200 to-slate-200 bg-clip-text text-transparent">

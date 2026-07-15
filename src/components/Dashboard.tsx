@@ -417,6 +417,16 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
 
   return (
     <div className="w-full space-y-8 px-4 py-6" id="retail-dashboard-stage">
+      {/* Colorful Top Banner */}
+      <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-800/80 aspect-[16/3.5] relative" id="dashboard-top-banner">
+        <img
+          src="/src/assets/images/retail_banner_1784117784431.jpg"
+          alt="Retail Sales Intelligence Banner"
+          className="w-full h-full object-cover"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#080d1a] via-transparent to-[#080d1a]/20" />
+      </div>
       
       {/* 1. Upper Header & Context Desk */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between border-b border-slate-800 pb-6 gap-4" id="dashboard-header-container">
