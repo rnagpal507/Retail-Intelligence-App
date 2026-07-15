@@ -1,0 +1,6 @@
+{
+  "name": "Retail Sales Intelligence",
+  "description": "A comprehensive executive dashboard that parses weekly sales sheets and store masters, performing relational joins and generating action-oriented, Gemini-powered retail intelligence briefings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
