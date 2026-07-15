@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "motion/react";
 import { UploadCloud, FileSpreadsheet, CheckCircle2, AlertCircle, RefreshCw, Sparkles, FileText, Check } from "lucide-react";
 import { parseAndValidateSpreadsheet } from "../utils/parser";
 import { ValidationSummary } from "../types";
+// @ts-ignore
+import retailBanner from "../assets/images/retail_banner_1784117784431.jpg";
 
 interface UploadPanelProps {
   onDataLoaded: (sales: any[], stores: any[], joinInfo: any) => void;
@@ -118,7 +120,7 @@ export default function UploadPanel({ onDataLoaded, onUseSampleData }: UploadPan
       {/* Colorful Top Banner */}
       <div className="mb-10 rounded-2xl overflow-hidden shadow-2xl border border-slate-800/80 aspect-[16/4.5] relative" id="upload-top-banner">
         <img
-          src="/src/assets/images/retail_banner_1784117784431.jpg"
+          src={retailBanner}
           alt="Retail Sales Intelligence Banner"
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"

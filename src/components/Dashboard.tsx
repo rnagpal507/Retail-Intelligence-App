@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import { SalesRecord, AggregatedMetrics } from "../types";
 import { aggregateRetailData } from "../utils/parser";
+// @ts-ignore
+import retailBanner from "../assets/images/retail_banner_1784117784431.jpg";
 
 interface DashboardProps {
   salesData: SalesRecord[];
@@ -420,7 +422,7 @@ export default function Dashboard({ salesData, joinInfo, onReset }: DashboardPro
       {/* Colorful Top Banner */}
       <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-800/80 aspect-[16/3.5] relative" id="dashboard-top-banner">
         <img
-          src="/src/assets/images/retail_banner_1784117784431.jpg"
+          src={retailBanner}
           alt="Retail Sales Intelligence Banner"
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
